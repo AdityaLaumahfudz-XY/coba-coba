@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aditya Laumahfudz Isabel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #f39c12;
+            --text-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --bg-color: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .school {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 16px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .social-icon.fb { color: #3b5998; background-color: #f0f4f8; }
+        .social-icon.ig { color: #e1306c; background-color: #f0f4f8; }
+        .social-icon.wa { color: #25d366; background-color: #f0f4f8; }
+        .social-icon.li { color: #0077b5; background-color: #f0f4f8; }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+        
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .right-column {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .info-item {
+            margin-bottom: 12px;
+        }
+        
+        .info-title {
+            font-weight: bold;
+        }
+        
+        .info-detail {
+            color: #666;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+            transition: var(--transition);
+        }
+        
+        .skill-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .education-item, .experience-item, .competition-item, .project-item {
+            margin-bottom: 22px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .education-item:hover, .experience-item:hover, .competition-item:hover, .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .edu-title, .exp-title, .comp-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .edu-place, .exp-place, .comp-place {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .edu-date, .exp-date, .comp-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .achievement-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-icon {
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .language-item {
+            margin-bottom: 15px;
+        }
+        
+        .language-name {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 1.2s ease-in-out;
+        }
+        
+        .progress-text {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 4px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .left-column {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        /* Animasi */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/FotoAditya.jpg" alt="Foto Aditya Laumahfudz Isabel" class="profile-img">
+            <!-- Ganti dengan URL online jika lokal tidak muncul -->
+            <!-- <img src="https://via.placeholder.com/160" alt="Foto Aditya Laumahfudz Isabel" class="profile-img"> -->
+            <h1>ADITYA LAUMAHFUDZ ISABEL</h1>
+            <p class="tagline">Siswa Aktif dan Berprestasi</p>
+            <p class="school">SMAN 2 Kota Probolinggo</p>
+            
+            <div class="social-links">
+                <a href="https://wa.me/62881027381616" class="social-icon wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="" class="social-icon fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/adityalaumahfudz?igsh=ZWhnbnRseTdsZHEw" class="social-icon ig" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/aditya-laumahfudz-isabel-7442522a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">Profil</h2>
+                    <p>Siswa kelas 11 dengan minat di bidang komputer dan sastra yang memiliki semangat belajar tinggi dan kemampuan berorganisasi yang baik. Berpengalaman dalam berbagai kegiatan ekstrakurikuler dan memiliki prestasi akademik serta sastra yang membanggakan.</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Minat dan Hobi</h2>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 8px;"><i class="fas fa-code text-primary"></i> Programming</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-bug text-primary"></i> Bug Hunting</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-book text-primary"></i> Membaca & Menulis</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-terminal text-primary"></i> Linux & Terminal</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-chess text-primary"></i> Bermain Catur</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-music text-primary"></i> Mendengarkan Musik</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Informasi Kontak</h2>
+                    <div class="info-item">
+                        <div class="info-title"><i class="fas fa-phone"></i> Telepon</div>
+                        <div class="info-detail">+62 881-0273-81616</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-title"><i class="fas fa-envelope"></i> Email</div>
+                        <div class="info-detail">laumahfudzaditya@gmail.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-title"><i class="fas fa-map-marker-alt"></i> Alamat</div>
+                        <div class="info-detail">Kota Probolinggo, Jawa Timur</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Keterampilan</h2>
+                    <div class="skills">
+                        <span class="skill-badge">Microsoft Office</span>
+                        <span class="skill-badge">Public Speaking</span>
+                        <span class="skill-badge">Kepemimpinan</span>
+                        <span class="skill-badge">Menulis</span>
+                        <span class="skill-badge">Programming</span>
+						<span class="skill-badge">Cyber Security</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Keahlian Teknis</h2>
+                    <div class="skills">
+                        <span class="skill-badge">HTML/CSS</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Cyber Security</span>
+                        <span class="skill-badge">Bug Hunter</span>
+                        <span class="skill-badge">Linux</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Bahasa</h2>
+                    <div class="language-item">
+                        <span class="language-name">Bahasa Indonesia</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-width="100%"></div>
+                        </div>
+                        <div class="progress-text">100% (Lancar)</div>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Bahasa Inggris</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-width="60%"></div>
+                        </div>
+                        <div class="progress-text">60% (Menengah)</div>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Bahasa Jawa</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-width="30%"></div>
+                        </div>
+                        <div class="progress-text">30% (Dasar)</div>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Bahasa Mandarin</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-width="40%"></div>
+                        </div>
+                        <div class="progress-text">40% (Menengah)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title">Pendidikan</h2>
+                    <div class="education-item">
+                        <div class="edu-title">SMAN 2 Kota Probolinggo</div>
+                        <div class="edu-place">KELAS 11</div>
+                        <div class="edu-date">2025 - Sekarang</div>
+                        <p>Siswa aktif dengan nilai rata-rata rapor yang baik. Mengikuti berbagai kegiatan ekstrakurikuler dan organisasi siswa.</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="edu-title">SMPN 2 Kota Probolinggo</div>
+                        <div class="edu-place">Pendidikan Menengah Pertama</div>
+                        <div class="edu-date">2021 - 2024</div>
+                        <p>Lulus dengan predikat sangat memuaskan. Aktif dalam kegiatan ekstrakurikuler.</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="edu-title">SDN Sukabumi 7</div>
+                        <div class="edu-place">Pendidikan Dasar</div>
+                        <div class="edu-date">2015 - 2021</div>
+                        <p>Lulus dengan predikat baik. Sering mengikuti lomba dan kegiatan tingkat SD.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Pengalaman Organisasi</h2>
+                    <div class="experience-item">
+                        <div class="exp-title">Wakil Ketua Jurnalistik</div>
+                        <div class="exp-place">SMAN 2 Kota Probolinggo</div>
+                        <div class="exp-date">2024 - 2025</div>
+                        <p>Membantu mengatue liputan berbagai kegiatan sekolah seperti peringatan hari besar nasional, perlombaan antar kelas, dan bakti sosial.</p>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">Anggota Kelompok Ilmiah Remaja (KIR)</div>
+                        <div class="exp-place">SMAN 2 Kota Probolinggo</div>
+                        <div class="exp-date">2024 - Sekarang</div>
+                        <p>Berpartisipasi aktif dalam kegiatan penelitian dan eksperimen ilmiah.</p>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">Anggota Ekstrakurikuler Programming</div>
+                        <div class="exp-place">SMAN 2 Kota Probolinggo</div>
+                        <div class="exp-date">2024 - Sekarang</div>
+                        <p>Berpartisipasi aktif dalam diskusi dan bimbingan programming mingguan, mengikuti berbagai kompetisi di bidang IT, dan sedang mengembangkan website pribadi.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Pengalaman Lomba & Prestasi</h2>
+                    <div class="competition-item">
+                        <div class="comp-title">OSN (Olimpiade Sains Nasional) Matematika SD</div>
+                        <div class="comp-place">Tingkat Sekolah</div>
+                        <div class="comp-date">2020</div>
+                        <p>Berpartisipasi dalam olimpiade matematika tingkat sekolah dasar.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">OPSI (Olimpiade Penelitian Siswa Indonesia) IPT SMA 2025</div>
+                        <div class="comp-place">Tingkat Nasional</div>
+                        <div class="comp-date"> 2025</div>
+                        <p>Berpartisipasi dalam lomba penelitian ilmiah untuk siswa SMA.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">WRCSO (World Robotics & Computer Science Olympiad)</div>
+                        <div class="comp-place">Tingkat Internasional</div>
+                        <div class="comp-date">2025</div>
+                        <p><strong>Prestasi: Gold Medal</strong> dalam kompetisi robotika dan ilmu komputer internasional.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">WSDGC (World Sustainable Development Goal Challenge)</div>
+                        <div class="comp-place">Tingkat Internasional</div>
+                        <div class="comp-date">2025</div>
+                        <p><strong>Prestasi: Gold Medal</strong> dalam tantangan global untuk mencapai tujuan pembangunan berkelanjutan.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">Lomba CTF (Capture The Flag)</div>
+                        <div class="comp-place">Tingkat Nasional</div>
+                        <div class="comp-date">2024</div>
+                        <p>Mengikuti kompetisi keamanan siber dalam format CTF.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">Hackathon</div>
+                        <div class="comp-place">Tingkat Sekolah</div>
+                        <div class="comp-date">2025</div>
+                        <p>Berpartisipasi dalam kompetisi pengembangan perangkat lunak intensif 24 jam.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">JYCC (Jatim Youth Codepreneur Challenge) 2025</div>
+                        <div class="comp-place">Tingkat Jawa Timur</div>
+                        <div class="comp-date">2025</div>
+                        <p>Mengikuti kompetisi kewirausahaan dan teknologi untuk pemuda Jawa Timur.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">Juara 3 Lomba Cipta Puisi Nasional</div>
+                        <div class="comp-place">Tingkat Nasional</div>
+                        <div class="comp-date">2025</div>
+                        <p>Memperoleh peringkat 3 dalam lomba menulis puisi tingkat nasional.</p>
+                    </div>
+                    <div class="competition-item">
+                        <div class="comp-title">Juara 1 Lomba Cipta Cerpen Nasional</div>
+                        <div class="comp-place">Tingkat Nasional</div>
+                        <div class="comp-date">2024</div>
+                        <p>Memperoleh peringkat 1 dalam lomba menulis cerpen tingkat nasional.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Proyek</h2>
+                    <div class="projects">
+                        <div class="project-item">
+                            <div class="project-title">Program Machine Learning untuk Tata Kelola Kota dan Kesehatan</div>
+                            <p>Pengembangan model prediktif berbasis ML untuk menganalisis permasalahan kota dan kesehatan.</p>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Website Portofolio Pribadi</div>
+                            <p>Pembuatan website untuk menampilkan keterampilan, pengalaman, dan proyek pribadi.</p>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Buku Antologi Puisi: Di Saat Langit Biru</div>
+                            <p>Kontributor dan editor dalam penerbitan buku antologi puisi karya penulis muda.</p>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Novel: Langit Biru Tanpa Namamu</div>
+                            <p>Penulis novel fiksi bergenre romansa, drama, dan religi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Portofolio Aditya Laumahfudz Isabel | SMAN 2 Probolinggo</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animasi fade-in saat scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animasi progress bar
+        const progressBars = document.querySelectorAll('.progress');
+        const observerBar = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width;
+                    observerBar.unobserve(entry.target); // Hanya sekali
+                }
+            });
+        }, { threshold: 0.8 });
+
+        progressBars.forEach(bar => {
+            observerBar.observe(bar);
+        });
+    </script>
+</body>
+</html>
